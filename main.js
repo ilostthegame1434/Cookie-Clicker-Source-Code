@@ -630,7 +630,7 @@ Game.Launch=function()
 	'<div class="listing">&bull; game has been renamed to "Cookie Clicker" to avoid confusion</div>'+
 	'<div class="listing">&bull; can now click the big cookie to generate cookies for free</div>'+
 	'<div class="listing">&bull; removed fall damage</div>'+
-	//'<div class="listing">&bull; fixed various typos : player\'s name is now correctly spelled as "[bakeryName]"</div>'+
+	//'<div class="listing">&bull; fixed various typos : player\'s name is now correctly spelled as "[plantationName]"</div>'+
 	'<div class="listing">&bull; removed all references to computer-animated movie <i style="font-style:italic;">Hoodwinked!</i> (2005)</div>'+
 	'<div class="listing">&bull; went back in time and invented cookies and computer mice, ensuring Cookie Clicker would one day come to exist</div>'+
 	'<div class="listing">&bull; game now fully compliant with Geneva Conventions</div>'+
@@ -868,7 +868,7 @@ Game.Launch=function()
 	'<div class="title">18/05/2014 - better late than easter</div>'+
 	'<div class="listing">&bull; bunnies and eggs, somehow</div>'+
 	'<div class="listing">&bull; prompts now have keyboard shortcuts like system prompts would</div>'+
-	'<div class="listing">&bull; naming your bakery? you betcha</div>'+
+	'<div class="listing">&bull; naming your plantation? you betcha</div>'+
 	'<div class="listing">&bull; "Fast notes" option to make all notifications close faster; new button to close all notifications</div>'+
 	'<div class="listing">&bull; the dungeons beta is now available on <a href="http://orteil.dashnet.org/cookieclicker/betadungeons" target="_blank">/betadungeons</a></div>'+
 	
@@ -1380,43 +1380,43 @@ Game.Launch=function()
 		
 		
 		/*=====================================================================================
-		BAKERY NAME
+		plantation NAME
 		=======================================================================================*/
-		Game.RandomBakeryName=function()
+		Game.RandomplantationName=function()
 		{
 			return (Math.random()>0.05?(choose(['Magic','Fantastic','Fancy','Sassy','Snazzy','Pretty','Cute','Pirate','Ninja','Zombie','Robot','Radical','Urban','Cool','Hella','Sweet','Awful','Double','Triple','Turbo','Techno','Disco','Electro','Dancing','Wonder','Mutant','Space','Science','Medieval','Future','Captain','Bearded','Lovely','Tiny','Big','Fire','Water','Frozen','Metal','Plastic','Solid','Liquid','Moldy','Shiny','Happy','Happy Little','Slimy','Tasty','Delicious','Hungry','Greedy','Lethal','Professor','Doctor','Power','Chocolate','Crumbly','Choklit','Righteous','Glorious','Mnemonic','Psychic','Frenetic','Hectic','Crazy','Royal','El','Von'])+' '):'Mc')+choose(['Cookie','Biscuit','Muffin','Scone','Cupcake','Pancake','Chip','Sprocket','Gizmo','Puppet','Mitten','Sock','Teapot','Mystery','Baker','Cook','Grandma','Click','Clicker','Spaceship','Factory','Portal','Machine','Experiment','Monster','Panic','Burglar','Bandit','Booty','Potato','Pizza','Burger','Sausage','Meatball','Spaghetti','Macaroni','Kitten','Puppy','Giraffe','Zebra','Parrot','Dolphin','Duckling','Sloth','Turtle','Goblin','Pixie','Gnome','Computer','Pirate','Ninja','Zombie','Robot']);
 		}
-		Game.GetBakeryName=function() {return Game.RandomBakeryName();}
-		Game.bakeryName=Game.GetBakeryName();
-		Game.bakeryNameL=l('bakeryName');
-		Game.bakeryNameL.innerHTML=Game.bakeryName+'\'s bakery';
-		Game.bakeryNameSet=function(what)
+		Game.GetplantationName=function() {return Game.RandomplantationName();}
+		Game.plantationName=Game.GetplantationName();
+		Game.plantationNameL=l('plantationName');
+		Game.plantationNameL.innerHTML=Game.plantationName+'\'s plantation';
+		Game.plantationNameSet=function(what)
 		{
-			Game.bakeryName=what.replace(/\W+/g,' ');
-			Game.bakeryName=Game.bakeryName.substring(0,28);
-			Game.bakeryNameRefresh();
+			Game.plantationName=what.replace(/\W+/g,' ');
+			Game.plantationName=Game.plantationName.substring(0,28);
+			Game.plantationNameRefresh();
 		}
-		Game.bakeryNameRefresh=function()
+		Game.plantationNameRefresh=function()
 		{
-			var name=Game.bakeryName;
-			if (name.slice(-1).toLowerCase()=='s') name+='\' bakery'; else name+='\'s bakery';
-			Game.bakeryNameL.innerHTML=name;
-			name=Game.bakeryName.toLowerCase();
+			var name=Game.plantationName;
+			if (name.slice(-1).toLowerCase()=='s') name+='\' plantation'; else name+='\'s plantation';
+			Game.plantationNameL.innerHTML=name;
+			name=Game.plantationName.toLowerCase();
 			if (name=='orteil') Game.Win('God complex');
 			if (name.indexOf('saysopensesame',name.length-('saysopensesame').length)>0 && !Game.sesame) Game.OpenSesame();
 			Game.recalculateGains=1;
 		}
-		Game.bakeryNamePrompt=function()
+		Game.plantationNamePrompt=function()
 		{
-			Game.Prompt('<h3>Name your bakery</h3><div class="block" style="text-align:center;">What should your bakery\'s name be?</div><div class="block"><input type="text" style="text-align:center;width:100%;" id="bakeryNameInput" value="'+Game.bakeryName+'"/></div>',[['Confirm','if (l(\'bakeryNameInput\').value.length>0) {Game.bakeryNameSet(l(\'bakeryNameInput\').value);Game.Win(\'What\\\'s in a name\');Game.ClosePrompt();}'],['Random','Game.bakeryNamePromptRandom();'],'Cancel']);
-			l('bakeryNameInput').focus();
-			l('bakeryNameInput').select();
+			Game.Prompt('<h3>Name your plantation</h3><div class="block" style="text-align:center;">What should your plantation\'s name be?</div><div class="block"><input type="text" style="text-align:center;width:100%;" id="plantationNameInput" value="'+Game.plantationName+'"/></div>',[['Confirm','if (l(\'plantationNameInput\').value.length>0) {Game.plantationNameSet(l(\'plantationNameInput\').value);Game.Win(\'What\\\'s in a name\');Game.ClosePrompt();}'],['Random','Game.plantationNamePromptRandom();'],'Cancel']);
+			l('plantationNameInput').focus();
+			l('plantationNameInput').select();
 		}
-		Game.bakeryNamePromptRandom=function()
+		Game.plantationNamePromptRandom=function()
 		{
-			l('bakeryNameInput').value=Game.RandomBakeryName();
+			l('plantationNameInput').value=Game.RandomplantationName();
 		}
-		AddEvent(Game.bakeryNameL,'click',Game.bakeryNamePrompt);
+		AddEvent(Game.plantationNameL,'click',Game.plantationNamePrompt);
 		
 		
 		/*=====================================================================================
@@ -1748,7 +1748,7 @@ Game.Launch=function()
 		Game.FileSave=function()
 		{
 			Game.prefs.showBackupWarning=0;
-			var filename=Game.bakeryName.replace(/[^a-zA-Z0-9]+/g,'')+'Bakery';
+			var filename=Game.plantationName.replace(/[^a-zA-Z0-9]+/g,'')+'plantation';
 			var text=Game.WriteSave(1);
 			var blob=new Blob([text],{type:'text/plain;charset=utf-8'});
 			saveAs(blob,filename+'.txt');
@@ -1780,7 +1780,7 @@ Game.Launch=function()
 			(type==3?'\n	run start date : ':'')+parseInt(Game.startDate)+';'+
 			(type==3?'\n	legacy start date : ':'')+parseInt(Game.fullDate)+';'+
 			(type==3?'\n	date when we last opened the game : ':'')+parseInt(Game.lastDate)+';'+
-			(type==3?'\n	bakery name : ':'')+(Game.bakeryName)+';'+
+			(type==3?'\n	plantation name : ':'')+(Game.plantationName)+';'+
 			(type==3?'\n	seed : ':'')+(Game.seed)+
 			'|';
 			if (type==3) str+='\n\nPacked preferences bitfield\n	';
@@ -2069,7 +2069,7 @@ Game.Launch=function()
 						Game.startDate=parseInt(spl[0]);
 						Game.fullDate=parseInt(spl[1]);
 						Game.lastDate=parseInt(spl[2]);
-						Game.bakeryName=spl[3]?spl[3]:Game.GetBakeryName();
+						Game.plantationName=spl[3]?spl[3]:Game.GetplantationName();
 						Game.seed=spl[4]?spl[4]:Game.makeSeed();
 						//prefs
 						if (version<1.0503) spl=str[3].split('');
@@ -2450,7 +2450,7 @@ Game.Launch=function()
 						}
 						
 			
-						Game.bakeryNameRefresh();
+						Game.plantationNameRefresh();
 						
 					}
 					else//importing old version save
@@ -2711,8 +2711,8 @@ Game.Launch=function()
 				Game.Reset(1);
 				Game.resets=0;
 				Game.fullDate=parseInt(Date.now());
-				Game.bakeryName=Game.GetBakeryName();
-				Game.bakeryNameRefresh();
+				Game.plantationName=Game.GetplantationName();
+				Game.plantationNameRefresh();
 				Game.cookiesReset=0;
 				Game.prestige=0;
 				Game.heavenlyChips=0;
@@ -3007,7 +3007,7 @@ Game.Launch=function()
 			var heavenlyMult=0;
 			if (Game.Has('Heavenly chip secret')) heavenlyMult+=0.05;
 			if (Game.Has('Heavenly cookie stand')) heavenlyMult+=0.20;
-			if (Game.Has('Heavenly bakery')) heavenlyMult+=0.25;
+			if (Game.Has('Heavenly plantation')) heavenlyMult+=0.25;
 			if (Game.Has('Heavenly confectionery')) heavenlyMult+=0.25;
 			if (Game.Has('Heavenly key')) heavenlyMult+=0.25;
 			//if (Game.hasAura('Dragon God')) heavenlyMult*=1.05;
@@ -4153,7 +4153,7 @@ Game.Launch=function()
 				if (rawCookiesPs>=Game.CpsAchievements[i].threshold) Game.Win(Game.CpsAchievements[i].name);
 			}
 			
-			name=Game.bakeryName.toLowerCase();
+			name=Game.plantationName.toLowerCase();
 			if (name=='orteil') mult*=0.99;
 			else if (name=='ortiel') mult*=0.98;//or so help me
 			
@@ -4993,7 +4993,7 @@ Game.Launch=function()
 							if (cookie.bought>0 && cookie.pool=='cookie') cookies.push(cookie.icon);
 						}
 						me.picPos=choose(cookies);
-						if (Game.bakeryName.toLowerCase()=='ortiel' || Math.random()<1/10000) me.picPos=[17,5];
+						if (Game.plantationName.toLowerCase()=='ortiel' || Math.random()<1/10000) me.picPos=[17,5];
 						pic='icons.png';
 					}
 				}
@@ -5557,7 +5557,7 @@ Game.Launch=function()
 			}
 			else if (Game.onMenu=='log')
 			{
-				str+=replaceAll('[bakeryName]',Game.bakeryName,Game.updateLog);
+				str+=replaceAll('[plantationName]',Game.plantationName,Game.updateLog);
 			}
 			else if (Game.onMenu=='stats')
 			{
@@ -6165,13 +6165,13 @@ Game.Launch=function()
 				choose([
 					'News : what do golden cookies taste like? Study reveals a flavor "somewhere between spearmint and liquorice".',
 					'News : what do wrath cookies taste like? Study reveals a flavor "somewhere between blood sausage and seawater".',
-					'News : '+Game.bakeryName+'-brand cookies "'+choose(['much less soggy','much tastier','relatively less crappy','marginally less awful','less toxic','possibly more edible','more fashionable','slightly nicer','trendier','arguably healthier','objectively better choice','slightly less terrible','decidedly cookier','a tad cheaper'])+' than competitors", says consumer survey.',
-					'News : "'+Game.bakeryName+'" set to be this year\'s most popular baby name.',
-					'News : new popularity survey says '+Game.bakeryName+'\'s the word when it comes to cookies.',
-					'News : major city being renamed '+Game.bakeryName+'ville after world-famous cookie manufacturer.',
-					'News : '+choose(['street','school','nursing home','stadium','new fast food chain','new planet','new disease','flesh-eating virus','deadly bacteria','new species of '+choose(animals),'new law','baby','programming language'])+' to be named after '+Game.bakeryName+', the world-famous cookie manufacturer.',
-					'News : don\'t miss tonight\'s biopic on '+Game.bakeryName+'\'s irresistible rise to success!',
-					'News : don\'t miss tonight\'s interview of '+Game.bakeryName+' by '+choose(['Bloprah','Blavid Bletterman','Blimmy Blimmel','Blellen Blegeneres','Blimmy Blallon','Blonan Blo\'Brien','Blay Bleno','Blon Blewart','Bleven Blolbert','Lord Toxikhron of dimension 7-B19',Game.bakeryName+'\'s own evil clone'])+'!',
+					'News : '+Game.plantationName+'-brand cookies "'+choose(['much less soggy','much tastier','relatively less crappy','marginally less awful','less toxic','possibly more edible','more fashionable','slightly nicer','trendier','arguably healthier','objectively better choice','slightly less terrible','decidedly cookier','a tad cheaper'])+' than competitors", says consumer survey.',
+					'News : "'+Game.plantationName+'" set to be this year\'s most popular baby name.',
+					'News : new popularity survey says '+Game.plantationName+'\'s the word when it comes to cookies.',
+					'News : major city being renamed '+Game.plantationName+'ville after world-famous cookie manufacturer.',
+					'News : '+choose(['street','school','nursing home','stadium','new fast food chain','new planet','new disease','flesh-eating virus','deadly bacteria','new species of '+choose(animals),'new law','baby','programming language'])+' to be named after '+Game.plantationName+', the world-famous cookie manufacturer.',
+					'News : don\'t miss tonight\'s biopic on '+Game.plantationName+'\'s irresistible rise to success!',
+					'News : don\'t miss tonight\'s interview of '+Game.plantationName+' by '+choose(['Bloprah','Blavid Bletterman','Blimmy Blimmel','Blellen Blegeneres','Blimmy Blallon','Blonan Blo\'Brien','Blay Bleno','Blon Blewart','Bleven Blolbert','Lord Toxikhron of dimension 7-B19',Game.plantationName+'\'s own evil clone'])+'!',
 					'News : people all over the internet still scratching their heads over nonsensical reference : "Okay, but why an egg?"',
 					'News : viral video "Too Many Cookies" could be "a grim commentary on the impending crisis our world is about to face", says famous economist.',
 					'News : "memes from last year somehow still relevant", deplore experts.',
@@ -6190,7 +6190,7 @@ Game.Launch=function()
 					'News : '+choose(['man','woman'])+' wakes up from coma, '+choose(['tries cookie for the first time, dies.','regrets it instantly.','wonders "why everything is cookies now".','babbles incoherently about some supposed "non-cookie food" we used to eat.','cites cookies as main motivator.','asks for cookies.']),
 					'News : pet '+choose(animals)+', dangerous fad or juicy new market?',
 					'News : person typing these wouldn\'t mind someone else breaking the news to THEM, for a change.',
-					'News : "average person bakes '+Beautify(Math.ceil(Game.cookiesEarned/7300000000))+' cookie'+(Math.ceil(Game.cookiesEarned/7300000000)==1?'':'s')+' a year" factoid actually just statistical error; '+Game.bakeryName+', who has produced '+Beautify(Game.cookiesEarned)+' cookies in their lifetime, is an outlier and should not have been counted.'
+					'News : "average person bakes '+Beautify(Math.ceil(Game.cookiesEarned/7300000000))+' cookie'+(Math.ceil(Game.cookiesEarned/7300000000)==1?'':'s')+' a year" factoid actually just statistical error; '+Game.plantationName+', who has produced '+Beautify(Game.cookiesEarned)+' cookies in their lifetime, is an outlier and should not have been counted.'
 					])
 				);
 			}
@@ -8492,7 +8492,7 @@ Game.Launch=function()
 		order=30000;
 		new Game.Upgrade('Heavenly chip secret','Unlocks <b>5%</b> of the potential of your prestige level.<q>Grants the knowledge of heavenly chips, and how to use them to make baking more efficient.<br>It\'s a secret to everyone.</q>',11,[19,7]);Game.last.noPerm=1;
 		new Game.Upgrade('Heavenly cookie stand','Unlocks <b>25%</b> of the potential of your prestige level.<q>Don\'t forget to visit the heavenly lemonade stand afterwards. When afterlife gives you lemons...</q>',1111,[18,7]);Game.last.noPerm=1;
-		new Game.Upgrade('Heavenly bakery','Unlocks <b>50%</b> of the potential of your prestige level.<q>Also sells godly cakes and divine pastries. The pretzels aren\'t too bad either.</q>',111111,[17,7]);Game.last.noPerm=1;
+		new Game.Upgrade('Heavenly plantation','Unlocks <b>50%</b> of the potential of your prestige level.<q>Also sells godly cakes and divine pastries. The pretzels aren\'t too bad either.</q>',111111,[17,7]);Game.last.noPerm=1;
 		new Game.Upgrade('Heavenly confectionery','Unlocks <b>75%</b> of the potential of your prestige level.<q>They say angel bakers work there. They take angel lunch breaks and sometimes go on angel strikes.</q>',11111111,[16,7]);Game.last.noPerm=1;
 		new Game.Upgrade('Heavenly key','Unlocks <b>100%</b> of the potential of your prestige level.<q>This is the key to the pearly (and tasty) gates of pastry heaven, granting you access to your entire stockpile of heavenly chips for baking purposes.<br>May you use them wisely.</q>',1111111111,[15,7]);Game.last.noPerm=1;
 		
@@ -9216,7 +9216,7 @@ Game.Launch=function()
 		order=10020;
 		Game.NewUpgradeCookie({name:'Pecan sandies',desc:'Stick a nut on a cookie and call it a day! Name your band after it! Whatever!',icon:[25,13],power:						4,price: 999999999999999999999999*5});
 		Game.NewUpgradeCookie({name:'Moravian spice cookies',desc:'Popular for being the world\'s moravianest cookies.',icon:[26,13],power:						4,price: 9999999999999999999999999});
-		Game.NewUpgradeCookie({name:'Anzac biscuits',desc:'Army biscuits from a bakery down under, containing no eggs but yes oats.',icon:[27,13],power:						4,price: 9999999999999999999999999*5});
+		Game.NewUpgradeCookie({name:'Anzac biscuits',desc:'Army biscuits from a plantation down under, containing no eggs but yes oats.',icon:[27,13],power:						4,price: 9999999999999999999999999*5});
 		Game.NewUpgradeCookie({name:'Buttercakes',desc:'Glistening with cholesterol, these cookies moistly straddle the line between the legal definition of a cookie and just a straight-up stick of butter.',icon:[29,13],power:						4,price: 99999999999999999999999999});
 		Game.NewUpgradeCookie({name:'Ice cream sandwiches',desc:'In an alternate universe, "ice cream sandwich" designates an ice cream cone filled with bacon, lettuce, and tomatoes. Maybe some sprinkles too.',icon:[28,13],power:						4,price: 99999999999999999999999999*5});
 		
@@ -9279,7 +9279,7 @@ Game.Launch=function()
 		new Game.TieredUpgrade('Four-leaf clover field','Chancemakers are <b>twice</b> as efficient.<q>No giant monsters here, just a whole lot of lucky grass.</q>','Chancemaker',4);
 		new Game.TieredUpgrade('A recipe book about books','Chancemakers are <b>twice</b> as efficient.<q>Tip the scales in your favor with 28 creative new ways to cook the books.</q>','Chancemaker',5);
 		new Game.TieredUpgrade('Leprechaun village','Chancemakers are <b>twice</b> as efficient.<q>You\'ve finally become accepted among the local leprechauns, who lend you their mythical luck as a sign of friendship (as well as some rather foul-tasting tea).</q>','Chancemaker',6);
-		new Game.TieredUpgrade('Improbability drive','Chancemakers are <b>twice</b> as efficient.<q>A strange engine that turns statistics on their head. Recommended by the Grandmother\'s Guide to the Bakery.</q>','Chancemaker',7);
+		new Game.TieredUpgrade('Improbability drive','Chancemakers are <b>twice</b> as efficient.<q>A strange engine that turns statistics on their head. Recommended by the Grandmother\'s Guide to the plantation.</q>','Chancemaker',7);
 		new Game.TieredUpgrade('Antisuperstistronics','Chancemakers are <b>twice</b> as efficient.<q>An exciting new field of research that makes unlucky things lucky. No mirror unbroken, no ladder unwalked under!</q>','Chancemaker',8);
 		
 		order=5000;
@@ -9485,7 +9485,7 @@ Game.Launch=function()
 		new Game.TieredUpgrade('Space-filling fibers','Fractal engines are <b>twice</b> as efficient.<q>This special ingredient has the incredible ability to fill the local space perfectly, effectively eradicating hunger in those who consume it!<br>Knowing that no hunger means no need for cookies, your marketers urge you to repurpose this product into next-level packing peanuts.</q>','Fractal engine',9);
 		new Game.TieredUpgrade('Endless book of prose','Fractal engines are <b>twice</b> as efficient.','Fractal engine',10);
 			Game.last.descFunc=function(){
-				var str='"There once was a baker named '+Game.bakeryName+'. One day, there was a knock at the door; '+Game.bakeryName+' opened it and was suddenly face-to-face with a strange and menacing old grandma. The grandma opened her mouth and, in a strange little voice, started reciting this strange little tale : ';
+				var str='"There once was a baker named '+Game.plantationName+'. One day, there was a knock at the door; '+Game.plantationName+' opened it and was suddenly face-to-face with a strange and menacing old grandma. The grandma opened her mouth and, in a strange little voice, started reciting this strange little tale : ';
 				var n=35;
 				var i=Math.floor(Game.T*0.1);
 				return this.desc+'<q style="font-family:Courier;">'+(str.substr(i%str.length,n)+(i%str.length>(str.length-n)?str.substr(0,i%str.length-(str.length-n)):''))+'</q>';
@@ -10066,15 +10066,15 @@ Game.Launch=function()
 		Game.BankAchievement('Wake and bake');
 		Game.BankAchievement('Making some dough');
 		Game.BankAchievement('So baked right now');
-		Game.BankAchievement('Fledgling bakery');
-		Game.BankAchievement('Affluent bakery');
-		Game.BankAchievement('World-famous bakery');
-		Game.BankAchievement('Cosmic bakery');
-		Game.BankAchievement('Galactic bakery');
-		Game.BankAchievement('Universal bakery');
-		Game.BankAchievement('Timeless bakery');
-		Game.BankAchievement('Infinite bakery');
-		Game.BankAchievement('Immortal bakery');
+		Game.BankAchievement('Fledgling plantation');
+		Game.BankAchievement('Affluent plantation');
+		Game.BankAchievement('World-famous plantation');
+		Game.BankAchievement('Cosmic plantation');
+		Game.BankAchievement('Galactic plantation');
+		Game.BankAchievement('Universal plantation');
+		Game.BankAchievement('Timeless plantation');
+		Game.BankAchievement('Infinite plantation');
+		Game.BankAchievement('Immortal plantation');
 		Game.BankAchievement('Don\'t stop me now');
 		Game.BankAchievement('You can stop now');
 		Game.BankAchievement('Cookies all the way down');
@@ -10361,7 +10361,7 @@ Game.Launch=function()
 		new Game.Achievement('Hide & seek champion','Unlock <b>all the eggs</b>.<div class="line"></div>Owning this achievement makes eggs drop more frequently in future playthroughs.',[13,12]);
 	
 		order=11000;
-		new Game.Achievement('What\'s in a name','Give your bakery a name.',[15,9]);
+		new Game.Achievement('What\'s in a name','Give your plantation a name.',[15,9]);
 	
 	
 		order=1425;
@@ -10459,7 +10459,7 @@ Game.Launch=function()
 		Game.BankAchievement('He who controls the cookies controls the universe');Game.last.baseDesc+='<q>The milk must flow!</q>';Game.last.desc=BeautifyInText(Game.last.baseDesc);
 		Game.BankAchievement('Tonight on Hoarders');
 		Game.BankAchievement('Are you gonna eat all that?');
-		Game.BankAchievement('We\'re gonna need a bigger bakery');
+		Game.BankAchievement('We\'re gonna need a bigger plantation');
 		Game.BankAchievement('In the mouth of madness');Game.last.baseDesc+='<q>A cookie is just what we tell each other it is.</q>';Game.last.desc=BeautifyInText(Game.last.baseDesc);
 		Game.BankAchievement('Brought to you by the letter <div style="display:inline-block;background:url(img/money.png);width:16px;height:16px;"></div>');
 	
@@ -10599,7 +10599,7 @@ Game.Launch=function()
 		order=1445;
 		new Game.Achievement('A capital idea','Reach level <b>10</b> banks.',[15,26]);Game.Objects['Bank'].levelAchiev10=Game.last;
 		order=1470;
-		new Game.Achievement('It belongs in a bakery','Reach level <b>10</b> temples.',[16,26]);Game.Objects['Temple'].levelAchiev10=Game.last;
+		new Game.Achievement('It belongs in a plantation','Reach level <b>10</b> temples.',[16,26]);Game.Objects['Temple'].levelAchiev10=Game.last;
 		order=1495;
 		new Game.Achievement('Motormouth','Reach level <b>10</b> wizard towers.',[17,26]);Game.Objects['Wizard tower'].levelAchiev10=Game.last;
 		order=1520;
@@ -12870,10 +12870,10 @@ Game.Launch=function()
 		
 		Game.SesameReset=function()
 		{
-			var name=Game.bakeryName;
+			var name=Game.plantationName;
 			Game.HardReset(2);
-			Game.bakeryName=name;
-			Game.bakeryNameRefresh();
+			Game.plantationName=name;
+			Game.plantationNameRefresh();
 			Game.Achievements['Cheated cookies taste awful'].won=1;
 		}
 		
@@ -13240,8 +13240,8 @@ Game.Launch=function()
 				{
 					Game.Unlock('Heavenly chip secret');
 					if (Game.Has('Heavenly chip secret')) Game.Unlock('Heavenly cookie stand');
-					if (Game.Has('Heavenly cookie stand')) Game.Unlock('Heavenly bakery');
-					if (Game.Has('Heavenly bakery')) Game.Unlock('Heavenly confectionery');
+					if (Game.Has('Heavenly cookie stand')) Game.Unlock('Heavenly plantation');
+					if (Game.Has('Heavenly plantation')) Game.Unlock('Heavenly confectionery');
 					if (Game.Has('Heavenly confectionery')) Game.Unlock('Heavenly key');
 					
 					if (Game.Has('Heavenly key')) Game.Win('Wholesome');
